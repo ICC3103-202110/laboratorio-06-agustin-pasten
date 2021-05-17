@@ -17,11 +17,29 @@ function getTitle(){
     )
 }
 
+//'Temperature value to convert?'
+
+function yesNoInput(){
+    return inquirer.prompt({
+        name: 'input',
+        message: 'Left temperature is source?',
+        default: 'Y/n'
+    })
+}
+
+function newTemperatureInput(value){
+    return inquirer.prompt({
+        name: 'input',
+        message: 'Temperature value to convert?',
+        default: value
+    })
+}
+
 //necesito estas lineas para el input
 function inputFrom(){
     return inquirer.prompt({
         type: 'list',
-        name: 'type grades from',
+        name: 'from',
         message: 'From?',
         choices: ['Celsius','Fahrenheit','Kelvin']
     })
@@ -31,7 +49,7 @@ function inputFrom(){
 function inputTo(){
     return inquirer.prompt({
         type: 'list',
-        name: 'type grades to',
+        name: 'to',
         message: 'To?',
         choices: ['Celsius','Fahrenheit','Kelvin']
     })
@@ -39,8 +57,12 @@ function inputTo(){
 
 //inputFrom()
 //inputTo()
+//newTemperatureInput(0)
+//yesNoInput()
 module.exports = {
     getTitle,
+    yesNoInput,
+    newTemperatureInput,
     inputFrom,
     inputTo
 }
