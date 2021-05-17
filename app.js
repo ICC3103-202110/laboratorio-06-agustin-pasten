@@ -1,4 +1,4 @@
-const {getTitle} = require("./view")
+const {getTitle,inputFrom,inputTo} = require("./view")
 //const {} = require("./update")
 
 
@@ -6,7 +6,8 @@ const {getTitle} = require("./view")
 async function app(){
     console.clear();
     console.log(getTitle());
-   
+    await inputFrom()
+    await inputTo()
 }
 
 app()
