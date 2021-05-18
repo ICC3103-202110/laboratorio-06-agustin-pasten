@@ -17,13 +17,33 @@ function getTitle(){
     )
 }
 
-//'Temperature value to convert?'
+function getTable(leftValue, leftUnit, rightValue, rightUnit){
+    const table=[{
+        'leftValue': leftValue.toString(), 
+        'leftUnit': leftUnit.toString(), 
+        'rightValue': rightValue.toString(), 
+        'rightUnit': rightUnit.toString()
+    }]
+    return table
+}
 
 function yesNoInput(){
     return inquirer.prompt({
+        type: 'confirm',
         name: 'input',
         message: 'Left temperature is source?',
-        default: 'Y/n'
+        default: 'Yes',
+        choices: [
+            {
+                key: 'Y',
+                value: 'Yes'
+            },
+            {
+                key: 'n',
+                value: 'No'
+            }
+        ]
+        
     })
 }
 
@@ -61,6 +81,7 @@ function inputTo(){
 //yesNoInput()
 module.exports = {
     getTitle,
+    getTable,
     yesNoInput,
     newTemperatureInput,
     inputFrom,
