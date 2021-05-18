@@ -7,26 +7,26 @@ const { printTable } = require('console-table-printer');
 async function app(leftValue,leftUnit,rightValue,rightUnit){
     console.clear();
     console.log(getTitle());
-    //asi se puede usar los valores de la preguntas en inquerer, creando un objeto
+    
     printTable(getTable(leftValue,leftUnit,rightValue,rightUnit))
     let c = await yesNoInput()
     yesNo = c.input
-    console.log(yesNo)
+    
 
     if (yesNo ===true)
         d = await newTemperatureInput(leftValue)
     else
         d = await newTemperatureInput(rightValue)
     newTemperature = d.input
-    console.log(newTemperature)
+    
     
     let a = await inputFrom()
     fromSelect = a.from
-    console.log(fromSelect)
+    
 
     let b = await inputTo()
     toSelect = b.to
-    console.log(toSelect)
+    
 
     let newGrade = sameNumber(newTemperature)
 
@@ -57,8 +57,11 @@ async function app(leftValue,leftUnit,rightValue,rightUnit){
             newGrade = sameNumber(newTemperature)
     }
     
-    console.log(newGrade)
-    
+
+    if (yesNo ===true)
+        app(newTemperature,fromSelect,newGrade,toSelect)
+    if (yesNo ===false)
+        app(newGrade,toSelect,newTemperature,fromSelect)
 }
 
 app(0,"Celsius",32,'Fahrenheit')
