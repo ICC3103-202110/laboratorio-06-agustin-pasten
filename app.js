@@ -13,7 +13,10 @@ async function app(leftValue,leftUnit,rightValue,rightUnit){
     yesNo = c.input
     console.log(yesNo)
 
-    let d = await newTemperatureInput(0)
+    if (yesNo ===true)
+        d = await newTemperatureInput(leftValue)
+    else
+        d = await newTemperatureInput(rightValue)
     newTemperature = d.input
     console.log(newTemperature)
     
@@ -24,6 +27,38 @@ async function app(leftValue,leftUnit,rightValue,rightUnit){
     let b = await inputTo()
     toSelect = b.to
     console.log(toSelect)
+
+    let newGrade = sameNumber(newTemperature)
+
+    if (fromSelect ==="Celsius"){
+        if (toSelect ==="Celsius")
+            newGrade = sameNumber(newTemperature)
+        if (toSelect ==="Fahrenheit")
+            newGrade = celsiusToFahrenheit(newTemperature)
+        if (toSelect ==="Kelvin")
+            newGrade = celsiusToKelvin(newTemperature)
+    }
+
+    if (fromSelect ==="Fahrenheit"){
+        if (toSelect ==="Celsius")
+            newGrade = fahrenheitToCelsius(newTemperature)
+        if (toSelect ==="Fahrenheit")
+            newGrade = sameNumber(newTemperature)
+        if (toSelect ==="Kelvin")
+            newGrade = fahrenheitToKelvin(newTemperature)
+    }
+
+    if (fromSelect === "Kelvin"){
+        if (toSelect ==="Celsius")
+            newGrade = kelvinToCelsius(newTemperature)
+        if (toSelect ==="Fahrenheit")
+            newGrade = kelvinToFahrenheit(newTemperature)
+        if (toSelect ==="Kelvin")
+            newGrade = sameNumber(newTemperature)
+    }
+    
+    console.log(newGrade)
+    
 }
 
 app(0,"Celsius",32,'Fahrenheit')
