@@ -1,5 +1,6 @@
 const {getTitle,inputFrom,inputTo,yesNoInput, newTemperatureInput,getTable} = require("./view")
-//const {} = require("./update")
+const {celsiusToFahrenheit,celsiusToKelvin, kelvinToCelsius, kelvinToFahrenheit,
+    fahrenheitToCelsius,fahrenheitToKelvin,sameNumber} = require("./update")
 const { printTable } = require('console-table-printer');
 
 

@@ -55,7 +55,7 @@ function newTemperatureInput(value){
     })
 }
 
-//necesito estas lineas para el input
+
 function inputFrom(){
     return inquirer.prompt({
         type: 'list',
@@ -75,10 +75,7 @@ function inputTo(){
     })
 }
 
-//inputFrom()
-//inputTo()
-//newTemperatureInput(0)
-//yesNoInput()
+
 module.exports = {
     getTitle,
     getTable,
